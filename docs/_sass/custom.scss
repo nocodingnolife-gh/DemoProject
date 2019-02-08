@@ -1,0 +1,33 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "微軟正黑體";
+}
+
+.main-content {
+    padding-top: 0;
+}
+
+.main-content > .row {
+    min-height: 48rem;
+}
+
+.ui-side-nav {
+    padding: 2rem 0rem;
+}
+
+.ui-side-nav * {
+    border: 0;
+}
+
+.ui-side-nav [data-toggle] {
+    font-weight: bold;
+}
+
+.ui-side-nav .list-group-item {
+    padding: 0rem 1rem;
+    cursor: pointer;
+}
+
+.ui-content {
+    padding: 2rem;
+    background-color: #f7f7f7;
+}

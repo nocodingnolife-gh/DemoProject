@@ -1,0 +1,27 @@
+{% assign collapseClass = 'collapse' %}
+{% if include.layer == 2 %}
+    {% assign collapseClass = '' %}
+{% endif %}
+
+<ul class="list-group {{ collapseClass }}">
+    {% for g in include.groups %}
+        {% assign nextLayer = include.layer | plus: 1 %}
+
+        {% assign pagesCount = g.items | size %}
+        {% assign nextGroups = g.items | group_by_exp: "x", "x.id | split: '/' | shift: nextLayer | first" %}
+
+        {% assign thePage = g.items[0] %}
+        {% assign theId = thePage.id | split: '/' | shift: nextLayer | first %}
+
+        <li class="list-group-item">
+            {% if pagesCount == 1 and theId == nil %}
+                <a href="{{ thePage.url }}">{{ g.name }}</a>
+            {% else %}
+                <a data-toggle="collapse">{{ g.name }}</a>
+                {% if nextGroups[0].name != nil %}
+                    {% include nav-part.html groups=nextGroups layer=nextLayer %}
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

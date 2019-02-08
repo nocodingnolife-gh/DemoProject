@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>{{ page.title }}</title>
+
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link
+        rel="stylesheet"
+        href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="page-header" role="banner">
+        <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+        <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+        {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}" class="btn">View on GitHub</a>
+        {% endif %}
+    </header>
+    <main id="content" class="main-content" role="main">
+        <div class="row">
+            <div class="col-3 ui-side-nav border-right">
+                {% include nav.html %}
+            </div>
+            <div class="col-9 ui-content">
+                {{ content }}
+            </div>
+        </div>
+        <footer class="site-footer" hidden></footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% assign pages = site.documents %}
+{% assign groups = pages | group_by_exp: "x", "x.id | split: '/' | shift: 2 | first" %}
+
+<h5>Liquid遞迴目錄很難...</h5>
+
+{% include nav-part.html groups=groups layer=2 %}
+
+<script>
+    $(function() {
+        var $nav = $('.ui-side-nav');
+        var $collapsers = $nav.find('li:has(ul) > a');
+
+        $collapsers.click(function(ev) {
+            if ($(this).is('[href]'))
+                ev.stopPropagation();
+        });
+        $collapsers.parent('li').click(function(ev) {
+            ev.stopPropagation();
+            $(this).children('a').next().collapse('toggle');
+        });
+
+        var $current = $('a[href="{{ page.url }}"]');
+        $current.parentsUntil($nav).filter('li').click();
+        $current.addClass('font-weight-bold');
+    });
+</script>

@@ -1,3 +1,29 @@
-theme: jekyll-theme-cayman
-title: DemoProject Pages
-description: Description of DemoProject
+# Site settings
+  # e.g. /blog
+  baseurl:      ""
+  # e.g. http://example.com
+  url:          ""
+  email:        nocodingnolife-gh@users.noreply.github.com
+  title:        過年在家做網站
+  description: >-
+    文件網站不好做
+
+# Build settings
+  markdown: kramdown
+  # plugins:
+  #   - jekyll-feed
+
+# Collections
+  collections_dir: collections
+  collections:
+    documents:
+      output: true
+
+# Defaults
+  defaults:
+    -
+      scope:
+        # empty string here means all files
+        path: ""
+      values:
+        layout: "default"
