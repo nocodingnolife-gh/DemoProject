@@ -19,7 +19,7 @@
             $(this).children('a').next().collapse('toggle');
         });
 
-        var $current = $('a[href="{{ page.url }}"]');
+        var $current = $('a[href="{{ site.baseurl }}{{ page.url }}"]');
         $current.parentsUntil($nav).filter('li').click();
         $current.addClass('font-weight-bold');
     });
