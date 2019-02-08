@@ -15,7 +15,7 @@
 
         <li class="list-group-item">
             {% if pagesCount == 1 and theId == nil %}
-                <a href="{{ site.baseurl }}{{ thePage.url }}">{{ g.name }}</a>
+                <a href="{{ thePage.url | relative_url }}">{{ g.name }}</a>
             {% else %}
                 <a data-toggle="collapse">{{ g.name }}</a>
                 {% if nextGroups[0].name != nil %}
