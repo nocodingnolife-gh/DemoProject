@@ -1,6 +1,6 @@
 # Site settings
   # e.g. /blog
-  baseurl:      ""
+  baseurl:      "/DemoProject"
   # e.g. http://example.com
   url:          ""
   email:        nocodingnolife-gh@users.noreply.github.com
