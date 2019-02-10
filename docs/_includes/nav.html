@@ -13,14 +13,11 @@
         $collapsers.click(function(ev) {
             if ($(this).is('[href]'))
                 ev.stopPropagation();
-        });
-        $collapsers.parent('li').click(function(ev) {
-            ev.stopPropagation();
-            $(this).children('a').next().collapse('toggle');
+            $(this).next().collapse('toggle');
         });
 
         var $current = $('a[href="{{ page.url | relative_url }}"]');
-        $current.parentsUntil($nav).filter('li').click();
+        $current.parentsUntil($nav).filter('li').children('a').click();
         $current.addClass('font-weight-bold');
     });
 </script>

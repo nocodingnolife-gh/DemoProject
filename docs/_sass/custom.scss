@@ -11,23 +11,24 @@ body {
 }
 
 .ui-side-nav {
-    padding: 2rem 0rem;
+    padding: 2rem 0.5rem;
+    background-color: transparent;
 }
 
 .ui-side-nav * {
     border: 0;
+    background-color: transparent;
 }
 
 .ui-side-nav [data-toggle] {
     font-weight: bold;
+    cursor: pointer;
 }
 
-.ui-side-nav .list-group-item {
+.ui-side-nav li {
     padding: 0rem 1rem;
-    cursor: pointer;
 }
 
 .ui-content {
     padding: 2rem;
-    background-color: #f7f7f7;
 }
