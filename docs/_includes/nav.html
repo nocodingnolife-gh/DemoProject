@@ -1,8 +1,6 @@
 {% assign pages = site.documents %}
 {% assign groups = pages | group_by_exp: "x", "x.id | split: '/' | shift: 2 | first" %}
 
-<h5>Liquid遞迴目錄很難...</h5>
-
 {% include nav-part.html groups=groups layer=2 %}
 
 <script>
