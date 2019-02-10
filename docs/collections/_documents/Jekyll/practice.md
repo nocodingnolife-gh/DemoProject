@@ -42,6 +42,37 @@ Practice makes perfect.
     }
 ~~~
 
+### 貼圖練習
+- 來源
+    - [Pexels](https://www.pexels.com/photo-license/)
+    - [IconFinder](https://www.iconfinder.com/free_icons)
+
+- 貼截圖
+
+  ![](2019-02-10-21-48-04.png)
+
+- 貼icon(不換行)
+  ![](icons/youtube-4102578.png){:width="32"}
+  ![](icons/instagram-4102579.png){:width="32"}
+  ![](icons/twitter-4102580.png){:width="32"}
+
+- 貼icon(換行)
+
+  ![](icons/youtube-4102578.png){:width="32"}
+
+  ![](icons/instagram-4102579.png){:width="32"}
+  ![](icons/twitter-4102580.png){:width="32"}
+
+- 貼桌布(不限寬)
+
+  ![](wallpapers/adventure-climb-conifer-640781.jpg)
+  ![](wallpapers/daylight-forest-glossy-443446.jpg)
+
+- 貼桌布(限寬)
+
+  ![](wallpapers/adventure-climb-conifer-640781.jpg){:width="200"}
+  ![](wallpapers/daylight-forest-glossy-443446.jpg){:width="200"}
+
 ### 子標題2
 我有很多字，我真的有很多字，我有很多字，我真的有很多字，我有很多字，我真的有很多字
 我有很多字，我真的有很多字，我有很多字，我真的有很多字，我有很多字，我真的有很多字
