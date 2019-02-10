@@ -39,6 +39,9 @@
                 {% include nav.html %}
             </div>
             <div class="col-9 ui-content">
+                <div class="ui-toc">
+                    {% include toc.html html=content %}
+                </div>
                 {{ content }}
             </div>
         </div>
