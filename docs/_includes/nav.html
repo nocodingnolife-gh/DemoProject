@@ -5,7 +5,9 @@
 
 <script>
     $(function() {
-        var $nav = $('.ui-side-nav');
+        var selector = '{{ include.selector }}';
+
+        var $nav = $(selector);
         var $collapsers = $nav.find('li:has(ul) > a');
 
         $collapsers.click(function(ev) {
