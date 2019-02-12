@@ -42,6 +42,9 @@ Practice makes perfect.
     }
 ~~~
 
+### 檔案練習
+- [pdf下載](pdfs/Pronunciation.pdf)
+
 ### 貼圖練習
 - 來源
     - [Pexels](https://www.pexels.com/photo-license/)
