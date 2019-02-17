@@ -52,7 +52,7 @@ Practice makes perfect.
 
 - 貼截圖
 
-  ![](2019-02-10-21-48-04.png)
+  ![](imgs/20190210-214804.png)
 
 - 貼icon(不換行)
   ![](icons/youtube-4102578.png){:width="32"}
