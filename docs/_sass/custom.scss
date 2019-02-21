@@ -1,43 +1,63 @@
 body {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "微軟正黑體";
+  font-family: "Open Sans", Arial, sans-serif, "微軟正黑體";
 }
 
 span.MJXp-mtext {
-    font-family: "Open Sans", Arial, sans-serif, "標楷體";
+  font-family: "Open Sans", Arial, sans-serif, "標楷體";
 }
 
 .main-content {
-    padding-top: 0;
+  @include large {
+    max-width: 100%;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+
+  @include medium {
+    max-width: 100%;
+    padding: 2rem 2rem;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+}
+
+.main-content {
+  padding-top: 0;
 }
 
 .main-content > .row {
-    min-height: 48rem;
+  min-height: 48rem;
 }
 
-.ui-side-nav {
-    padding: 2rem 0.5rem;
-    background-color: transparent;
+.ui-side {
+  top: 0;
+  height: 100vh;
+  position: sticky;
+  padding: 1.5rem 0.75rem;
+  font-size: 0.9rem;
+  background-color: transparent;
 }
 
-.ui-side-nav * {
-    border: 0;
-    background-color: transparent;
+.ui-side * {
+  border: 0;
+  background-color: transparent;
 }
 
-.ui-side-nav [data-toggle] {
-    font-weight: bold;
-    cursor: pointer;
+.ui-side h6 {
+  font-weight: bolder;
+  color: rgba(0, 0, 0, .65);
 }
 
-.ui-side-nav li {
-    padding: 0rem 1rem;
+.ui-side li {
+  padding: 0rem 1rem;
+}
+
+.ui-side [data-toggle] {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .ui-content {
-    padding: 2rem;
-}
-
-.ui-toc {
-    padding: 0.75rem;
-    background-color: #f7f7f7;
+  padding: 2rem;
 }
