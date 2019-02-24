@@ -1,7 +1,9 @@
-$headings-color: #159957;
+$heading-color: #159957;
 
 // Text
 .ui-content {
+  color: rgba(0, 0, 0, .85);
+
   h1 {
     font-size: 1.7em;
   }
