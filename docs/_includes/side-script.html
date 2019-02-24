@@ -27,14 +27,24 @@ var unsetSideFocus = $a => $a.removeClass('ui-side-focus');
 
 (function tocAutoFocus() {
     var $w = $(window);
-    var $hs = $content.children('h1, h2, h3, h4, h5, h6');
-    var tops = $hs.map((i, e) => $(e).offset().top).get();
-    var lastTop = tops.length ? tops[tops.length - 1] : 0;
+    var hs = $content.children('h1, h2, h3, h4, h5, h6')
+        .get().sort((e1, e2) => $(e1).offset().top - $(e2).offset().top);
+    var $hs = $(hs);
+    var bufferSize = 20;
 
     $w.scroll(function() {
+        var tops = $hs.map((i, e) => $(e).offset().top).get();
+        var lastTop = tops.length ? tops[tops.length - 1] : 0;
         var $topH = (function() {
             var scrollTop = $w.scrollTop();
-            var index = tops.findIndex(e => e >= scrollTop) - 1;
+            var index = tops.findIndex(e => e >= scrollTop);
+            if (index < 0)
+                return 0;
+
+            var diff = tops[index] - scrollTop;
+            if (diff > bufferSize)
+                index -= 1;
+
             if (scrollTop >= lastTop)
                 index = tops.length - 1;
 

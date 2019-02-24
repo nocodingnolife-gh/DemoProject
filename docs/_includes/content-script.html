@@ -18,9 +18,11 @@ $(function fieldDef() {
     var $ps = $hs.next('p');
     $ps.each(function() {
         var $p = $(this);
-        var isAllCode = $p.children().length === $p.children('code').length;
+        var $children = $p.children();
+        var count = $children.length;
+        var isAllCode = count > 0 && count === $children.filter('code').length;
         if (isAllCode)
-            $p.wrap('<div class="spec-field-def">');
+            $p.wrap($('<div>').addClass('attr-def'));
     });
 });
 </script>
