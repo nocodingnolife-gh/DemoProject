@@ -1,0 +1,38 @@
+<script>
+    $(function nav() {
+        var $nav = $('ui-side-nav');
+
+        var $current = $('a[href="{{ page.url | relative_url }}"]');
+        $current.parentsUntil($nav).filter('li').children('a').click();
+        $current.addClass('font-weight-bold');
+    });
+
+    $(function toc() {
+        var $toc = $('.ui-toc');
+
+        $toc.find('ul').addClass('list-group');
+        $toc.find('li').addClass('list-group-item');
+
+        $toc.find('a + ul').addClass('collapse');
+        $toc.find('a + ul').prev().attr('data-toggle', 'collapse');
+    });
+
+    $(function side() {
+        var $sides = $('.ui-side');
+
+        $sides.on('click', 'li:has(ul) > a', function(ev) {
+            var $a = $(this);
+            if ($a.is('[href]'))
+                ev.stopPropagation();
+
+            $a.next().collapse('toggle');
+        });
+
+        $sides.find('a').each(function() {
+            var $a = $(this);
+            $a.attr('title', $a.text());
+        });
+
+        $sides.find('> ul > li > ul').collapse('show');
+    });
+</script>

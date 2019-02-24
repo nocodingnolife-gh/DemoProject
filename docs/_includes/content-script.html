@@ -1,0 +1,26 @@
+<script>
+    $(function fixCjkSpacing() {
+        var $content = $('.ui-content');
+
+        // Halfwidth and Fullwidth Forms    FF00–FFEF
+        // CJK Symbols and Punctuation      3000–303F
+        // CJK Unified Ideographs           4E00-9FFF
+        var cjkRegex = /([\uFF00-\uFFEF]|[\u3000-\u303F]|[\u4E00-\u9FFF])(\r|\r?\n)(?!$)/g;
+
+        $content.find('p, li').each(function() {
+            var $t = $(this);
+            $t.html($t.html().replace(cjkRegex, '$1'));
+        });
+    });
+
+    $(function() {
+        var $hs = $('h1, h2, h3, h4, h5, h6');
+        var $ps = $hs.next('p');
+        $ps.each(function() {
+            var $p = $(this);
+            var isAllCode = $p.children().length === $p.children('code').length;
+            if (isAllCode)
+                $p.wrap('<div class="spec-field-def">');
+        });
+    });
+</script>

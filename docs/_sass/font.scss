@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+
+$site-font-en: sans-serif, 'Roboto', Arial;
+$site-font-tc: $site-font-en, 'Noto Sans TC';
+
+body {
+  font-family: $site-font-tc;
+  font-weight: 400;
+}
+
+code, pre {
+  font-family: Consolas, $site-font-tc;
+}
+
+span.MJXp-mtext {
+  font-family: $site-font-en, '標楷體';
+}

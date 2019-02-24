@@ -44,21 +44,22 @@
     </header>
     <main id="content" class="main-content" role="main">
         <div class="row">
-            <div class="col-2 ui-side ui-side-nav border-right">
+            <div class="d-none d-lg-block col-2 ui-side ui-side-nav border-right">
                 <h6>目錄</h6>
-                {% include nav.html selector='.ui-side-nav' %}
+                {% include nav.html pages=site.documents %}
             </div>
-            <div class="col-8 ui-content">
+            <div class="col-12 col-md-9 col-lg-8 ui-content">
                 {{ content }}
             </div>
-            <div class="col-2 ui-side ui-toc border-left">
+            <div class="d-none d-md-block col-md-3 col-lg-2 ui-side ui-toc border-left">
                 <h6>本文內容</h6>
                 {% include toc.html html=content %}
-                {% include toc-script.html %}
             </div>
         </div>
         <footer class="site-footer" hidden></footer>
+
+        {% include side-script.html %}
+        {% include content-script.html %}
     </main>
-    <script>{% include cjk.js selector='.ui-content' %}</script>
 </body>
 </html>
