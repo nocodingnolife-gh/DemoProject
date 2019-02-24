@@ -1,19 +1,21 @@
 <script>
-$(function fixCjkSpacing() {
-    var $content = $('.ui-content');
+$(function() {
 
+var $content = $('.ui-content');
+
+(function fixCjkSpacing($targets) {
     // Halfwidth and Fullwidth Forms    FF00–FFEF
     // CJK Symbols and Punctuation      3000–303F
     // CJK Unified Ideographs           4E00-9FFF
     var cjkRegex = /([\uFF00-\uFFEF]|[\u3000-\u303F]|[\u4E00-\u9FFF])(\r|\r?\n)(?!$)/g;
 
-    $content.find('p, li').each(function() {
+    $targets.each(function() {
         var $t = $(this);
         $t.html($t.html().replace(cjkRegex, '$1'));
     });
-});
+})($content.find('p, li'));
 
-$(function fieldDef() {
+(function fieldDef() {
     var $hs = $('h1, h2, h3, h4, h5, h6');
     var $ps = $hs.next('p');
     $ps.each(function() {
@@ -24,5 +26,29 @@ $(function fieldDef() {
         if (isAllCode)
             $p.wrap($('<div>').addClass('attr-def'));
     });
+})();
+
+(function transformInlineSymbols($targets) {
+    var regexBrace = /\{([^\}]*)\}/g;
+    var regexBracket = /\[([^\]]*)\]/g;
+    var replacementBrace = '<span class="span-brace">$1</span>';
+    var replacementBracket = '<span class="span-bracket">$1</span>';
+    var getReplacedHtml = text =>
+        text.replace(regexBrace, replacementBrace)
+            .replace(regexBracket, replacementBracket);
+
+    var replaceNode = function(n) {
+        if (n.nodeType !== 3)
+            return;
+
+        var html = getReplacedHtml(n.textContent);
+        $(n).replaceWith($('<span>').html(html));
+    };
+
+    $targets.each((i, e) =>
+        $(e).contents().each((i, n) =>
+            replaceNode(n)));
+})($content.find('p, li'));
+
 });
 </script>

@@ -8,10 +8,14 @@ body {
   font-weight: 400;
 }
 
-code, pre {
+.ui-content {
   font-family: Consolas, $site-font-tc;
-}
 
-span.MJXp-mtext {
-  font-family: $site-font-en, '標楷體';
+  code, pre {
+    font-family: Consolas, $site-font-tc;
+  }
+
+  span.MJXp-mtext {
+    font-family: $site-font-en, '標楷體';
+  }
 }
