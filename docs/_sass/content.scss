@@ -1,3 +1,5 @@
+$headings-color: #159957;
+
 // Text
 .ui-content {
   h1 {
@@ -29,7 +31,14 @@
   padding: 1.5rem;
   line-height: 1.65;
 
-  .spec-field-def {
+  .field-def {
     margin-top: -1rem;
+  }
+}
+
+// Image
+.ui-content {
+  img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
   }
 }

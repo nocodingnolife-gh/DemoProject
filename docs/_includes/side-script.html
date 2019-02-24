@@ -1,38 +1,74 @@
 <script>
-    $(function nav() {
-        var $nav = $('ui-side-nav');
+$(function() {
 
-        var $current = $('a[href="{{ page.url | relative_url }}"]');
-        $current.parentsUntil($nav).filter('li').children('a').click();
-        $current.addClass('font-weight-bold');
+var $nav = $('ui-side-nav');
+var $toc = $('.ui-toc');
+var $content = $('.ui-content');
+var setSideFocus = $a => $a.addClass('ui-side-focus');
+var unsetSideFocus = $a => $a.removeClass('ui-side-focus');
+
+(function nav() {
+    var $current = $('a[href="{{ page.url | relative_url }}"]');
+    setSideFocus($current);
+
+    $current.parentsUntil($nav)
+        .filter('li')
+        .find('> a + ul')
+        .collapse('show');
+})();
+
+(function tocInit() {
+    $toc.find('ul').addClass('list-group');
+    $toc.find('li').addClass('list-group-item');
+
+    $toc.find('a + ul').addClass('collapse');
+    $toc.find('a + ul').prev().attr('data-toggle', 'collapse');
+})();
+
+(function tocAutoFocus() {
+    var $w = $(window);
+    var $hs = $content.children('h1, h2, h3, h4, h5, h6');
+    var tops = $hs.map((i, e) => $(e).offset().top).get();
+    var lastTop = tops.length ? tops[tops.length - 1] : 0;
+
+    $w.scroll(function() {
+        var $topH = (function() {
+            var scrollTop = $w.scrollTop();
+            var index = tops.findIndex(e => e >= scrollTop) - 1;
+            if (scrollTop >= lastTop)
+                index = tops.length - 1;
+
+            return index < 0 ? $() : $hs.eq(index);
+        })();
+
+        var id = $topH.attr('id');
+        var $target = $toc.find('a[href="#' + id + '"]');
+
+        unsetSideFocus($toc.find('a'));
+        setSideFocus($target);
+
+        $target.parentsUntil($toc)
+            .filter('li').find('> a + ul')
+            .collapse('show');
+    });
+})();
+
+(function side() {
+    var $sides = $('.ui-side');
+
+    $sides.find('a').each((i, e) =>
+        $(e).attr('title', $(e).text()));
+
+    $sides.on('click', 'li:has(ul) > a', function(ev) {
+        var $a = $(this);
+        if ($a.is('[href]'))
+            ev.stopPropagation();
+
+        $a.next('ul').collapse('toggle');
     });
 
-    $(function toc() {
-        var $toc = $('.ui-toc');
+    $sides.find('> ul > li > ul').collapse('show');
+})();
 
-        $toc.find('ul').addClass('list-group');
-        $toc.find('li').addClass('list-group-item');
-
-        $toc.find('a + ul').addClass('collapse');
-        $toc.find('a + ul').prev().attr('data-toggle', 'collapse');
-    });
-
-    $(function side() {
-        var $sides = $('.ui-side');
-
-        $sides.on('click', 'li:has(ul) > a', function(ev) {
-            var $a = $(this);
-            if ($a.is('[href]'))
-                ev.stopPropagation();
-
-            $a.next().collapse('toggle');
-        });
-
-        $sides.find('a').each(function() {
-            var $a = $(this);
-            $a.attr('title', $a.text());
-        });
-
-        $sides.find('> ul > li > ul').collapse('show');
-    });
+});
 </script>
